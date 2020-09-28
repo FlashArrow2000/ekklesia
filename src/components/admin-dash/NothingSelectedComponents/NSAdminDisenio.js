@@ -10,11 +10,11 @@ import { Alert, AlertTitle } from "@material-ui/lab";
 import { useForm } from "../../../hooks/useForm";
 import { useForm2 } from "../../../hooks/useForm2";
 import { useDispatch } from "react-redux";
-import { numeroNaveBS, startNumeroNaveBS } from "../../../actions/navesBS";
-// import { Example1 } from "./Example1";
+import { startNumeroNaveBS } from "../../../actions/navesBS";
+import { NSAdminDisenioP2 } from "./NSAdminDisenioP2";
 import "../../ui/AdminLeftSideNavbar.css";
-import horizontal from "../../ui/assets/img/horizontal.png"
-import vertical from "../../ui/assets/img/Vertical.png"
+import horizontal from "../../ui/assets/img/horizontal.png";
+import vertical from "../../ui/assets/img/Vertical.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -108,48 +108,6 @@ export const NSAdminDisenio = () => {
     }
   };
 
-  const handleClick = (e, numero) => {
-    e.preventDefault();
-    console.log(e);
-    // switch (numero) {
-    //   case 1:
-    //     console.log("value: ", e.target.value);
-    //     setstate1(e.target.value);
-    //     break;
-    //   case 2:
-    //     if (e.target.value === 1) {
-    //       setstate2(e.target.value);
-    //     } else if (e.target.value === 2) {
-    //       setstate2(e.target.value);
-    //     }
-    //     break;
-    //   case 3:
-    //     if (e.target.value === 1) {
-    //       setstate3(e.target.value);
-    //     } else if (e.target.value === 2) {
-    //       setstate3(e.target.value);
-    //     }
-    //     break;
-    //   case 4:
-    //     if (e.target.value === 1) {
-    //       setstate4(e.target.value);
-    //     } else if (e.target.value === 2) {
-    //       setstate4(e.target.value);
-    //     }
-    //     break;
-    //   case 5:
-    //     if (e.target.value === 1) {
-    //       setstate5(e.target.value);
-    //     } else if (e.target.value === 2) {
-    //       setstate5(e.target.value);
-    //     }
-    //     break;
-
-    //   default:
-    //     break;
-    // }
-  };
-
   const data = [
     {
       value: 1,
@@ -188,28 +146,19 @@ export const NSAdminDisenio = () => {
   for (let index = 1; index <= NumeroNaves; index++) {
     const posicion = index - 1;
 
-    naves[posicion] = index;
+    naves[posicion] = {numero: index};
   }
 
-  startNumeroNaveBS(naves);
-  // dispatch(startNumeroNaveBS(naves));
+  dispatch(startNumeroNaveBS(naves));
 
   const [navesIndValue, handleInputChange2] = useForm2();
 
   const [state, setState] = React.useState({
-    checkedA: true, //hay que cambiar esto a false
+    checkedA: false, //hay que cambiar esto a false
   });
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
-  };
-
-  const [selectedValue, setSelectedValue] = useState(1);
-
-  const handleSelectChange = (e) => {
-    setSelectedValue({
-      [e.name]: e.value,
-    });
   };
 
   return (
@@ -424,27 +373,35 @@ export const NSAdminDisenio = () => {
                                   </option>
                                 </select>
                                 <div className="container">
-                                <div className="row">
-                                  <div className="col-6">
-                                    <label
-                                      htmlFor="alineacion"
-                                      className="mt-3"
-                                    >
-                                      Vertical
-                                    </label>
-                                    <img src={vertical} className="img-fluid" alt="Responsive image"></img>
-                                  </div>
+                                  <div className="row">
+                                    <div className="col-6">
+                                      <label
+                                        htmlFor="alineacion"
+                                        className="mt-3"
+                                      >
+                                        Vertical
+                                      </label>
+                                      <img
+                                        src={vertical}
+                                        className="img-fluid"
+                                        alt="Responsive image"
+                                      ></img>
+                                    </div>
 
-                                  <div className="col-6">
-                                    <label
-                                      htmlFor="alineacion"
-                                      className="mt-3"
-                                    >
-                                      Horizontal
-                                    </label>
-                                    <img src={horizontal} className="img-fluid" alt="Responsive image"></img>
+                                    <div className="col-6">
+                                      <label
+                                        htmlFor="alineacion"
+                                        className="mt-3"
+                                      >
+                                        Horizontal
+                                      </label>
+                                      <img
+                                        src={horizontal}
+                                        className="img-fluid"
+                                        alt="Responsive image"
+                                      ></img>
+                                    </div>
                                   </div>
-                                </div>
                                 </div>
                               </div>
                             </div>
@@ -502,27 +459,35 @@ export const NSAdminDisenio = () => {
                                   </option>
                                 </select>
                                 <div className="container">
-                                <div className="row">
-                                  <div className="col-6">
-                                    <label
-                                      htmlFor="alineacion"
-                                      className="mt-3"
-                                    >
-                                      Vertical
-                                    </label>
-                                    <img src={vertical} className="img-fluid" alt="Responsive image"></img>
-                                  </div>
+                                  <div className="row">
+                                    <div className="col-6">
+                                      <label
+                                        htmlFor="alineacion"
+                                        className="mt-3"
+                                      >
+                                        Vertical
+                                      </label>
+                                      <img
+                                        src={vertical}
+                                        className="img-fluid"
+                                        alt="Responsive image"
+                                      ></img>
+                                    </div>
 
-                                  <div className="col-6">
-                                    <label
-                                      htmlFor="alineacion"
-                                      className="mt-3"
-                                    >
-                                      Horizontal
-                                    </label>
-                                    <img src={horizontal} className="img-fluid" alt="Responsive image"></img>
+                                    <div className="col-6">
+                                      <label
+                                        htmlFor="alineacion"
+                                        className="mt-3"
+                                      >
+                                        Horizontal
+                                      </label>
+                                      <img
+                                        src={horizontal}
+                                        className="img-fluid"
+                                        alt="Responsive image"
+                                      ></img>
+                                    </div>
                                   </div>
-                                </div>
                                 </div>
                               </div>
                             </div>
@@ -579,27 +544,35 @@ export const NSAdminDisenio = () => {
                                   </option>
                                 </select>
                                 <div className="container">
-                                <div className="row">
-                                  <div className="col-6">
-                                    <label
-                                      htmlFor="alineacion"
-                                      className="mt-3"
-                                    >
-                                      Vertical
-                                    </label>
-                                    <img src={vertical} className="img-fluid" alt="Responsive image"></img>
-                                  </div>
+                                  <div className="row">
+                                    <div className="col-6">
+                                      <label
+                                        htmlFor="alineacion"
+                                        className="mt-3"
+                                      >
+                                        Vertical
+                                      </label>
+                                      <img
+                                        src={vertical}
+                                        className="img-fluid"
+                                        alt="Responsive image"
+                                      ></img>
+                                    </div>
 
-                                  <div className="col-6">
-                                    <label
-                                      htmlFor="alineacion"
-                                      className="mt-3"
-                                    >
-                                      Horizontal
-                                    </label>
-                                    <img src={horizontal} className="img-fluid" alt="Responsive image"></img>
+                                    <div className="col-6">
+                                      <label
+                                        htmlFor="alineacion"
+                                        className="mt-3"
+                                      >
+                                        Horizontal
+                                      </label>
+                                      <img
+                                        src={horizontal}
+                                        className="img-fluid"
+                                        alt="Responsive image"
+                                      ></img>
+                                    </div>
                                   </div>
-                                </div>
                                 </div>
                               </div>
                             </div>
@@ -657,27 +630,35 @@ export const NSAdminDisenio = () => {
                                 </select>
 
                                 <div className="container">
-                                <div className="row">
-                                  <div className="col-6">
-                                    <label
-                                      htmlFor="alineacion"
-                                      className="mt-3"
-                                    >
-                                      Vertical
-                                    </label>
-                                    <img src={vertical} className="img-fluid" alt="Responsive image"></img>
-                                  </div>
+                                  <div className="row">
+                                    <div className="col-6">
+                                      <label
+                                        htmlFor="alineacion"
+                                        className="mt-3"
+                                      >
+                                        Vertical
+                                      </label>
+                                      <img
+                                        src={vertical}
+                                        className="img-fluid"
+                                        alt="Responsive image"
+                                      ></img>
+                                    </div>
 
-                                  <div className="col-6">
-                                    <label
-                                      htmlFor="alineacion"
-                                      className="mt-3"
-                                    >
-                                      Horizontal
-                                    </label>
-                                    <img src={horizontal} className="img-fluid" alt="Responsive image"></img>
+                                    <div className="col-6">
+                                      <label
+                                        htmlFor="alineacion"
+                                        className="mt-3"
+                                      >
+                                        Horizontal
+                                      </label>
+                                      <img
+                                        src={horizontal}
+                                        className="img-fluid"
+                                        alt="Responsive image"
+                                      ></img>
+                                    </div>
                                   </div>
-                                </div>
                                 </div>
                               </div>
                             </div>
@@ -734,27 +715,35 @@ export const NSAdminDisenio = () => {
                                   </option>
                                 </select>
                                 <div className="container">
-                                <div className="row">
-                                  <div className="col-6">
-                                    <label
-                                      htmlFor="alineacion"
-                                      className="mt-3"
-                                    >
-                                      Vertical
-                                    </label>
-                                    <img src={vertical} className="img-fluid" alt="Responsive image"></img>
-                                  </div>
+                                  <div className="row">
+                                    <div className="col-6">
+                                      <label
+                                        htmlFor="alineacion"
+                                        className="mt-3"
+                                      >
+                                        Vertical
+                                      </label>
+                                      <img
+                                        src={vertical}
+                                        className="img-fluid"
+                                        alt="Responsive image"
+                                      ></img>
+                                    </div>
 
-                                  <div className="col-6">
-                                    <label
-                                      htmlFor="alineacion"
-                                      className="mt-3"
-                                    >
-                                      Horizontal
-                                    </label>
-                                    <img src={horizontal} className="img-fluid" alt="Responsive image"></img>
+                                    <div className="col-6">
+                                      <label
+                                        htmlFor="alineacion"
+                                        className="mt-3"
+                                      >
+                                        Horizontal
+                                      </label>
+                                      <img
+                                        src={horizontal}
+                                        className="img-fluid"
+                                        alt="Responsive image"
+                                      ></img>
+                                    </div>
                                   </div>
-                                </div>
                                 </div>
                               </div>
                             </div>
@@ -767,26 +756,8 @@ export const NSAdminDisenio = () => {
                   </div>
                 ) : null}
 
-                <h5 className="text-center mt-5 ubuntu">
-                  Espacio para individuales
-                </h5>
+                <NSAdminDisenioP2 />
 
-                <div className="container mb-3 mt-1 ubuntu">
-                  <div className="row">
-                    <div className="container col-12 d-flex justify-content-center mt-5 ubuntu">
-                      <TextField
-                        id="standard-number"
-                        label="Numero de naves para individuales"
-                        type="number"
-                        name="naves"
-                        onChange={handleInputChange2}
-                        InputLabelProps={{
-                          shrink: true,
-                        }}
-                      />
-                    </div>
-                  </div>
-                </div>
               </div>
             </form>
           </div>
